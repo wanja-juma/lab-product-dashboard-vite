@@ -1,5 +1,4 @@
-import React from 'react'
-
+/* global test, expect */
 
 import '@testing-library/jest-dom'
 import { render, screen, fireEvent } from '@testing-library/react'
