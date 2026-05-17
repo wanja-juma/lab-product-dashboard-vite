@@ -137,7 +137,7 @@ Product Dashboard
 
 ---
 
-## 👨 Author
+##  Author
 
 Developed as part of a React lab exercise.
 

@@ -1,29 +1,25 @@
-import { useState } from "react";
+import { useState } from 'react'
+import ProductList from './components/ProductList'
 
-import ProductList from "./components/ProductList";
+const initialProducts = [
+  { id: 1, name: 'Laptop', price: '$999', inStock: true },
+  { id: 2, name: 'Phone', price: '$699', inStock: false },
+  { id: 3, name: 'Tablet', price: '$499', inStock: true },
+]
 
-const App = () => {
-  // MUST match test data
-  const initialProducts = [
-    { id: 1, name: "Laptop", price: "$999", inStock: true },
-    { id: 2, name: "Phone", price: "$699", inStock: false },
-    { id: 3, name: "Tablet", price: "$499", inStock: true },
-  ];
+function App() {
+  const [products, setProducts] = useState(initialProducts)
 
-  const [products, setProducts] = useState(initialProducts);
-
-  // Remove product
-  const handleRemove = (id) => {
-    setProducts(products.filter((product) => product.id !== id));
-  };
+  const removeProduct = (id) => {
+    setProducts(prev => prev.filter(p => p.id !== id))
+  }
 
   return (
     <div>
       <h1>Product Dashboard</h1>
-
-      <ProductList products={products} onRemove={handleRemove} />
+      <ProductList products={products} onRemove={removeProduct} />
     </div>
-  );
-};
+  )
+}
 
 export default App;
