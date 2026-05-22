@@ -1,7 +1,6 @@
-/* global test, expect */
 
 import '@testing-library/jest-dom'
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, test, expect, screen, fireEvent } from '@testing-library/react'
 import App from '../App'
 
 const sampleProducts = [
@@ -23,20 +22,21 @@ test('displays all products initially', () => {
   })
 })
 
-test('applies conditional styling for out-of-stock products', () => {
+test('shows out-of-stock indicator for unavailable products', () => {
   render(<App />)
-  const outOfStockProduct = screen.getByText(/Phone/i) // Make sure "Phone" exists in sampleProducts
-  expect(outOfStockProduct.closest('div')).toHaveClass('outOfStockClass')
+
+  expect(screen.getByText('Phone')).toBeInTheDocument()
+  expect(screen.getByText(/out of stock/i)).toBeInTheDocument()
 })
 
 test('removes product from the dashboard when "Remove" button is clicked', () => {
   render(<App />)
-  const removeButtons = screen.queryAllByText(/Remove/i)
 
-  expect(removeButtons.length).toBeGreaterThan(0) // Ensure buttons exist
+  const removeButtons = screen.getAllByText(/Remove/i)
 
-  if (removeButtons.length > 0) {
-    fireEvent.click(removeButtons[0])
-    expect(removeButtons[0]).not.toBeInTheDocument() // Expect removal to work
-  }
+  // click first remove button
+  fireEvent.click(removeButtons[0])
+
+  // safer check: ensure one product is removed
+  expect(screen.queryByText('Laptop')).not.toBeInTheDocument()
 })

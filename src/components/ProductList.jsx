@@ -1,18 +1,18 @@
 /* eslint-disable react/prop-types */
-import ProductCard from "./ProductCard";
+import ProductCard from './ProductCard'
 
 function ProductList({ products, onRemove }) {
   return (
-    <>
-      {products.map((product) => (
+    <div>
+      {products.map(product => (
         <ProductCard
           key={product.id}
           product={product}
           onRemove={onRemove}
         />
       ))}
-    </>
-  );
+    </div>
+  )
 }
 
 export default ProductList;
