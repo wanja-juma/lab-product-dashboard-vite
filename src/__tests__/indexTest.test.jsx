@@ -1,6 +1,6 @@
-
+import { test, expect } from "vitest";
 import '@testing-library/jest-dom'
-import { render, test, expect, screen, fireEvent } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 import App from '../App'
 
 const sampleProducts = [
