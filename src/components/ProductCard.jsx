@@ -5,10 +5,12 @@ function ProductCard({ product, onRemove }) {
   const isOutOfStock = !product.inStock
 
   return (
-    <div className={styles.card} data-testid={`product-${product.id}`}>
-
-      <h3 className={isOutOfStock ? "outOfStockClass" : ""}>
-          {product.name}
+    <div
+      className={`card ${isOutOfStock ? "outOfStockClass" : ""}`}
+      data-testid={`product-${product.id}`}
+    >
+      <h3>
+        {product.name}
       </h3>
 
       <p>{product.price}</p>
