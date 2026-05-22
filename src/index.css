@@ -4,3 +4,7 @@ body {
   background-color: #f4f4f4;
   text-align: center;
 }
+.outOfStockClass {
+  color: red;
+  opacity: 0.6;
+}

@@ -6,10 +6,9 @@ function ProductCard({ product, onRemove }) {
 
   return (
     <div className={styles.card} data-testid={`product-${product.id}`}>
-      <h3
-        className={isOutOfStock ? styles.outOfStock : ''}
-      >
-        {product.name}
+
+      <h3 className={isOutOfStock ? "outOfStockClass" : ""}>
+          {product.name}
       </h3>
 
       <p>{product.price}</p>
